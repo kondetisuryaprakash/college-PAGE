@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About CSE</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      font-size: 16px;
+    }
+
+    nav {
+      background: #003366;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00ccff;
+    }
+
+    header {
+      background: linear-gradient(135deg, #004080, #0077cc);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    main .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-content {
+      flex: 1 1 55%;
+      padding: 40px;
+    }
+
+    .text-content h2 {
+      color: #004080;
+      margin-top: 20px;
+    }
+
+    .text-content ul {
+      list-style-type: none;
+      margin-top: 10px;
+      padding-left: 0;
+    }
+
+    .text-content ul li {
+      padding: 10px 0;
+      font-size: 1rem;
+    }
+
+    .text-content ul li i {
+      color: #0077cc;
+      margin-right: 12px;
+    }
+
+    .text-content p {
+      line-height: 1.6;
+    }
+
+    .image-content {
+      flex: 1 1 45%;
+      background-color: #f5faff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .image-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+
+    .image-content img:hover {
+      transform: scale(1.05);
+    }
+
+    .cta {
+      margin-top: 30px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #0077cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta a:hover {
+      background-color: #005fa3;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    section h2 {
+      color: #004080;
+      margin-bottom: 15px;
+    }
+
+    section ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #004080;
+      color: white;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      main .container {
+        flex-direction: column;
+      }
+
+      .text-content, .image-content {
+        flex: 1 1 100%;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">CSE Dept.</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#register">Registration</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header id="home">
+    <h1>Computer Science and Engineering</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="text-content">
+        <h2>What is CSE?</h2>
+        <p>
+          Computer Science and Engineering (CSE) is the backbone of modern technology. It combines principles from computer science and engineering to create powerful software and hardware solutions.
+        </p>
+
+        <h2>Why Study CSE?</h2>
+        <ul>
+          <li><i class="fa-solid fa-laptop-code"></i> In-demand career options worldwide</li>
+          <li><i class="fa-solid fa-brain"></i> Artificial Intelligence and Machine Learning</li>
+          <li><i class="fa-solid fa-lightbulb"></i> Innovation-driven domain</li>
+          <li><i class="fa-solid fa-cloud"></i> Cloud, Data Science, IoT</li>
+        </ul>
+
+        <h2>Career Opportunities</h2>
+        <ul>
+          <li><i class="fa-solid fa-code"></i> Full Stack Developer</li>
+          <li><i class="fa-solid fa-database"></i> Data Scientist</li>
+          <li><i class="fa-solid fa-robot"></i> AI Engineer</li>
+          <li><i class="fa-solid fa-cogs"></i> Systems Architect</li>
+        </ul>
+
+        <div class="cta">
+          <a href="#courses">Learn More</a>
+        </div>
+      </div>
+
+      <div class="image-content">
+        <img src="c:\Users\konde\Downloads\cse image.webp" alt="Students learning computer science with laptops" />
+      </div>
+    </div>
+
+    <!-- Courses Section -->
+    <section id="courses">
+      <h2>Courses Offered</h2>
+      <ul>
+        <li>Introduction to Programming (C, Python)</li>
+        <li>Data Structures and Algorithms</li>
+        <li>Operating Systems</li>
+        <li>Artificial Intelligence and Machine Learning</li>
+        <li>Cloud Computing</li>
+      </ul>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty">
+      <h2>Faculty</h2>
+      <ul>
+        <li>Dr. Priya Sharma – Head of Department</li>
+        <li>Prof. Anil Kumar – Data Science Expert</li>
+        <li>Dr. Sneha Iyer – Cybersecurity & Networks</li>
+        <li>Prof. Rahul Das – AI & ML Research</li>
+      </ul>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register">
+      <h2>Registration</h2>
+      <p>
+        Interested in joining the CSE Department? Fill out the 
+        <a href="https://example.com/registration" target="_blank">registration form</a> to apply now!
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CSE Info Page | Crafted with ❤️ by Surya</p>
+  </footer>
+
+</body>
+</html>

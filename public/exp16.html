@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://raw.githubusercontent.com/LoginRadius/awesome-login-pages/refs/heads/main/login-form-13/login-form-13/images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 16px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 10px 10px 40px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #45a049;
+    }
+
+    .register-button {
+      background-color: #007BFF;
+    }
+
+    .register-button:hover {
+      background-color: #0056b3;
+    }
+
+    .icon-logo {
+      font-size: 45px;
+      color: #007BFF;
+      margin-bottom: 15px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .success-message {
+      color: green;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .register-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .register-text a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .register-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="icon-logo">
+      <i class="fas fa-user-lock"></i>
+    </div>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" name="username" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+      </div>
+      <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+    </form>
+
+    <div class="register-text">
+      <p>Don't have an account? <a href="reg.html">Register here</a></p>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function validateLogin(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const messageDiv = document.getElementById("message");
+
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+      .then((res) => {
+        if (res.ok) {
+          messageDiv.innerHTML = "<p class='success-message'>Login successful!</p>";
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
+        } else {
+          return res.text().then((text) => {
+            messageDiv.innerHTML = `<p class='error-message'>${text}</p>`;
+          });
+        }
+      })
+      .catch((err) => {
+        messageDiv.innerHTML = `<p class='error-message'>Error: ${err.message}</p>`;
+      });
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", validateLogin);
+  </script>
+
+</body>
+</html>

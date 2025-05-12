@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lingaya's Institute - Departments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #004080;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+
+    nav {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex: 1;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      background-color: #00FFFF;
+      color: black;
+      transform: translateY(-2px);
+    }
+
+    .login-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: #00FFFF;
+      color: black;
+    }
+
+    #animationContainer {
+      height: calc(100vh - 180px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://i.ytimg.com/vi/nxrgMj21LPI/maxresdefault.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #animatedBox {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+
+    #animatedBox img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff;
+      margin-top: 30px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #004080;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Redesigned Facilities Section */
+    .facilities-section {
+      background-color: #f9f9f9;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .facilities-heading {
+      font-size: 2.5rem;
+      color: #004080;
+      margin-bottom: 10px;
+    }
+
+    .facilities-subtext {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .facilities-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .facility-card {
+      background: #ffffff;
+      padding: 25px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .facility-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 15px;
+    }
+
+    .facility-card h3 {
+      font-size: 1.3rem;
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .facility-card p {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column img {
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .footer-column p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .footer-column a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    .social-icons img {
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    .footer-bottom span {
+      color: #FF5733;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #animatedBox {
+        width: 250px;
+        height: 250px;
+      }
+
+      .facilities-heading {
+        font-size: 2rem;
+      }
+
+      .facility-card h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lingaya's Institute of Management and Technology</h1>
+    <p>Explore Our Departments</p>
+  </header>
+
+  <nav>
+    <div class="nav-links">
+      <a href="cse.html">CSE</a>
+      <a href="aids.html">AIDS</a>
+      <a href="aiml.html">AIML</a>
+      <a href="ece.html">ECE</a>
+    </div>
+    <a href="exp16.html" class="login-button-link">Login</a>
+  </nav>
+
+  <div id="animationContainer">
+    <div id="animatedBox">
+      <img src="c:/Users/konde/Downloads/lingayas1.jpg" alt="Animated Campus Image" />
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section>
+    <h2>About Lingaya's Institute</h2>
+    <p class="about-text">
+      Lingaya's Institute of Management and Technology is one of the leading educational institutions offering undergraduate and postgraduate programs in various fields. Our mission is to provide high-quality education, foster creativity, and produce future leaders in the fields of engineering, technology, and management.
+    </p>
+  </section>
+
+  <!-- Updated Facilities Section -->
+  <section class="facilities-section">
+  <h2 class="facilities-heading">Campus Facilities</h2>
+  <p class="facilities-subtext">Explore our state-of-the-art infrastructure designed to foster innovation and learning.</p>
+  <div class="facilities-container">
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/classroom.png" alt="Smart Classroom">
+      <h3>Smart Classrooms</h3>
+      <p>Modern, interactive classrooms with digital tools and real-time connectivity for hybrid learning.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/idea-sharing.png" alt="Innovation Lab">
+      <h3>Innovation Lab</h3>
+      <p>Incubation space for research and startups, equipped with the latest prototyping tools and mentoring support.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/books.png" alt="Library">
+      <h3>Central Library</h3>
+      <p>Access thousands of books, journals, and e-resources in a quiet and modern environment.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/basketball.png" alt="Sports Complex">
+      <h3>Sports Complex</h3>
+      <p>Indoor and outdoor sports facilities including basketball, cricket, football, gym, and more.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/wifi.png" alt="Wi-Fi Campus">
+      <h3>Wi-Fi Campus</h3>
+      <p>Seamless, high-speed wireless internet across the campus for students and faculty.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/bedroom.png" alt="Hostel">
+      <h3>On-Campus Hostel</h3>
+      <p>Safe, well-furnished hostels with dining, recreation areas, and round-the-clock security.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://img.icons8.com/color/96/restaurant.png" alt="Cafeteria">
+      <h3>Cafeteria</h3>
+      <p>Vibrant and hygienic cafeteria offering a wide variety of meals and refreshments.</p>
+    </div>
+    <div class="facility-card">
+      <img src="https://st3.depositphotos.com/1020091/12592/v/450/depositphotos_125927980-stock-illustration-cinema-auditorium-icon.jpg" alt="Auditorium">
+      <h3>Auditorium</h3>
+      <p>State-of-the-art auditorium for seminars, conferences, and cultural events.</p>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="c:\Users\konde\Downloads\lingayas logo.svg" alt="Lingayas Logo" />
+        <p><strong>Address:</strong> Madalavarigudem, Via Nunna, Nuzvid Road, Vijayawada Rural - 521212</p>
+        <p><strong>Call:</strong> +91 7799332797</p>
+        <p><strong>Email:</strong> <a href="mailto:23na1a5423.lingayas@limat.edu.in">23na1a5423.lingayas@limat.edu.in</a></p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Under Graduate Programs</h3>
+        <p>CIVIL Engineering</p>
+        <p>Electronics and Communication Engineering</p>
+        <p>Computer Science and Engineering</p>
+        <p>AI & Data Science</p>
+        <p>AI & Machine Learning</p>
+        <p>Foundation Course</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Post Graduate Programs</h3>
+        <p>Structural Engineering (CIVIL)</p>
+        <p>Embedded Systems (ECE)</p>
+        <p>Computer Science Engineering</p>
+        <p>AI & Data Science</p>
+        <p>Finance (MBA Finance)</p>
+        <p>Human Resource Management (MBA HR)</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Site Map</h3>
+        <p>Contact Us</p>
+        <p>Gallery</p>
+        <p>News & Articles</p>
+        <p>FAQ's</p>
+        <p>Admission Enquiry</p>
+        <p>Coming Soon</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright © 2025 All Rights Reserved by <span>Lingayas</span></p>
+    </div>
+  </footer>
+
+  <script>
+    let box = document.getElementById('animatedBox');
+    let position = (window.innerWidth - 300) / 2;
+    let direction = 1;
+
+    function animateBox() {
+      position += 3 * direction;
+      if (position >= window.innerWidth - 300 || position <= 0) {
+        direction *= -1;
+      }
+      box.style.left = position + 'px';
+    }
+
+    box.style.left = position + 'px';
+    setInterval(animateBox, 30);
+  </script>
+
+</body>
+</html>

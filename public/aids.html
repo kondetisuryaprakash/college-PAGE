@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI & Data Science Department</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3A8DFF;
+      --secondary: #4B6EAE;
+      --background: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --accent: #F3A847;
+      --card-bg: #fdfdfd;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #f0f0f0;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px 20px;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary);
+      padding-left: 15px;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .features, .faculty-grid, .stats {
+      display: grid;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .features {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .feature {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .faculty-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .faculty-member {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .faculty-member:hover {
+      transform: scale(1.03);
+    }
+
+    .faculty-photo {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .faculty-member h3 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .faculty-member p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cta a {
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 30px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: var(--accent);
+    }
+
+    .stats {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 15px var(--shadow);
+      text-align: center;
+    }
+
+    .stat {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--secondary);
+      color: white;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">AI & DS Dept.</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Artificial Intelligence & Data Science</h1>
+    <p>Innovate. Analyze. Solve. Shape the future with us.</p>
+  </header>
+
+  <section class="section" id="about">
+    <h2>About the Department</h2>
+    <p>
+      Our department is at the forefront of AI and Data Science education and research. We prepare students to solve real-world problems using intelligent systems, big data analysis, and machine learning tools.
+    </p>
+  </section>
+
+  <section class="section" id="courses">
+    <h2>Courses We Offer</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fa-solid fa-brain"></i>
+        <h3>AI & ML</h3>
+        <p>Learn foundational and advanced techniques in artificial intelligence.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Data Analytics</h3>
+        <p>Explore big data tools and analytical strategies for modern industries.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-language"></i>
+        <h3>NLP</h3>
+        <p>Understand language models, sentiment analysis, and chatbots.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Robotics</h3>
+        <p>Design intelligent robotic systems powered by AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faculty">
+    <h2>Meet Our Faculty</h2>
+    <div class="faculty-grid">
+      <div class="faculty-member">
+        <img src="c:\Users\konde\Downloads\murali.jpg" class="faculty-photo" />
+        <h3>Dr.Kalisetty Murali Krishna</h3>
+        <p>Deep Learning & Explainable AI</p>
+      </div>
+      <div class="faculty-member">
+        <img src="c:\Users\konde\Downloads\ferosh.jpg" class="faculty-photo" />
+        <h3>Prof. Shaik Ferosh</h3>
+        <p>Big Data & Systems</p>
+      </div>
+      <div class="faculty-member">
+        <img src="c:\Users\konde\Downloads\rajesh.jpg" class="faculty-photo" />
+        <h3>Dr.Kuncham Rajesh</h3>
+        <p>Natural Language Processing</p>
+      </div>
+      <div class="faculty-member">
+        <img src="c:\Users\konde\Downloads\durga.jpg" class="faculty-photo" />
+        <h3>Prof. Bapatla Durga</h3>
+        <p>Computer Vision & Robotics</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section stats">
+    <div>
+      <div class="stat">500+</div>
+      <div class="stat-label">Students Enrolled</div>
+    </div>
+    <div>
+      <div class="stat">25+</div>
+      <div class="stat-label">Faculty Experts</div>
+    </div>
+    <div>
+      <div class="stat">30+</div>
+      <div class="stat-label">Live Projects</div>
+    </div>
+    <div>
+      <div class="stat">100%</div>
+      <div class="stat-label">Placement Rate</div>
+    </div>
+  </section>
+
+  <section class="section" id="register">
+    <h2>Join Our Journey</h2>
+    <p>Ready to build a future in AI and Data Science? Apply now and become part of the revolution.</p>
+    <div class="cta">
+      <a href="#">Register Now</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AI & DS Department | Designed by Surya</p>
+  </footer>
+</body>
+</html>

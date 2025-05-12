@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>College Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #6c63ff;
+      --secondary-color: #ff6f61;
+      --tertiary-color: #4caf50;
+      --bg: #f8f9fc;
+      --text: #333;
+      --card: #fff;
+      --input-bg: #f1f1f1;
+      --button-hover: #5a50cc;
+    }
+
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #f1f1f1;
+      --card: #292929;
+      --input-bg: #3a3a3a;
+      --button-hover: #444;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .profile-container {
+      background-color: var(--card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    input, select, textarea {
+      background-color: var(--input-bg);
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      transition: border 0.3s, background 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-color);
+      background-color: #fff;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .profile-pic-preview {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 1rem auto;
+      display: block;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .action-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .pdf-btn, .back-btn, .dark-btn {
+      background-color: var(--secondary-color);
+    }
+
+    .pdf-btn:hover, .back-btn:hover, .dark-btn:hover {
+      background-color: #e04e39;
+    }
+
+    .dark-btn {
+      background-color: #34495e;
+    }
+
+    .dark-btn:hover {
+      background-color: #2c3e50;
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--tertiary-color);
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="profile-container">
+  <h2>College Profile</h2>
+  <form id="profileForm">
+    <div class="form-group">
+      <label for="profilePic">Profile Picture</label>
+      <input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)">
+      <img id="picPreview" class="profile-pic-preview" src="default-image.jpg" alt="Preview">
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group"><label for="rollNumber">Roll Number</label><input type="text" id="rollNumber" required></div>
+      <div class="form-group"><label for="dob">Date of Birth</label><input type="date" id="dob" required></div>
+      <div class="form-group"><label for="firstName">First Name</label><input type="text" id="firstName" required></div>
+      <div class="form-group"><label for="middleName">Middle Name</label><input type="text" id="middleName"></div>
+      <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" required></div>
+      <div class="form-group"><label for="gender">Gender</label>
+        <select id="gender">
+          <option>Male</option><option>Female</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="fatherName">Father's Name</label><input type="text" id="fatherName" required></div>
+      <div class="form-group"><label for="phoneNumber">Phone Number</label><input type="text" id="phoneNumber" required></div>
+      <div class="form-group"><label for="email">Email</label><input type="email" id="email" required></div>
+      <div class="form-group"><label for="department">Department</label>
+        <select id="department">
+          <option>Computer Science</option><option>Electronics</option><option>Mechanical</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group"><label for="address">Address</label><textarea id="address" rows="3" required></textarea></div>
+    <div class="form-group"><label for="bio">Profile Description</label><textarea id="bio" rows="4"></textarea></div>
+
+    <button type="submit">Update Profile</button>
+
+    <div class="action-btns">
+      <button type="button" class="pdf-btn" onclick="downloadPDF()">Download as PDF</button>
+      <button type="button" class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+      <button type="button" class="dark-btn" onclick="toggleDark()">🌓 Dark Mode</button>
+    </div>
+  </form>
+  <div id="message" class="message"></div>
+</div>
+
+<script>
+  function previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => document.getElementById('picPreview').src = e.target.result;
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function goBack() {
+    window.location.href = 'dashboard.html';
+  }
+
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+  }
+
+  function saveProfileData() {
+    const data = {
+      rollNumber: document.getElementById('rollNumber').value,
+      firstName: document.getElementById('firstName').value,
+      middleName: document.getElementById('middleName').value,
+      lastName: document.getElementById('lastName').value,
+      gender: document.getElementById('gender').value,
+      fatherName: document.getElementById('fatherName').value,
+      address: document.getElementById('address').value,
+      phoneNumber: document.getElementById('phoneNumber').value,
+      dob: document.getElementById('dob').value,
+      email: document.getElementById('email').value,
+      department: document.getElementById('department').value,
+      bio: document.getElementById('bio').value,
+    };
+    localStorage.setItem('profileData', JSON.stringify(data));
+  }
+
+  document.getElementById('profileForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    saveProfileData();
+    const msg = document.getElementById('message');
+    msg.classList.add('success');
+    msg.textContent = '✅ Profile updated successfully!';
+  });
+
+  window.onload = function () {
+    const saved = JSON.parse(localStorage.getItem('profileData'));
+    if (saved) {
+      Object.entries(saved).forEach(([key, value]) => {
+        const el = document.getElementById(key);
+        if (el) el.value = value;
+      });
+    }
+  };
+
+  function downloadPDF() {
+    const data = {
+      rollNumber: document.getElementById('rollNumber').value,
+      firstName: document.getElementById('firstName').value,
+      middleName: document.getElementById('middleName').value,
+      lastName: document.getElementById('lastName').value,
+      gender: document.getElementById('gender').value,
+      fatherName: document.getElementById('fatherName').value,
+      address: document.getElementById('address').value,
+      phoneNumber: document.getElementById('phoneNumber').value,
+      dob: document.getElementById('dob').value,
+      email: document.getElementById('email').value,
+      department: document.getElementById('department').value,
+      bio: document.getElementById('bio').value,
+    };
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(14);
+    doc.text('📘 College Profile', 20, 20);
+
+    let y = 30;
+    for (const [key, value] of Object.entries(data)) {
+      doc.text(`${key}: ${value}`, 20, y);
+      y += 10;
+    }
+
+    doc.save('profile.pdf');
+  }
+</script>
+
+</body>
+</html>

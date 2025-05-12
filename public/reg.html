@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background-image: url(https://www.limat.edu.in/wp-content/uploads/2021/08/limatcpy-1536x1100.jpg); /* Replace with your background image URL */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 50px;
+      height: auto;
+    }
+
+    form label {
+      margin-top: 10px;
+      display: block;
+      font-weight: bold;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      padding-left: 30px; /* Space for icons */
+      box-sizing: border-box; /* To include padding in the width calculation */
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #007bff;
+    }
+
+    .gender-group {
+      margin-top: -5px;
+      margin-bottom: 15px;
+    }
+
+    .gender-options {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #message {
+      text-align: center;
+      color: red;
+      margin-top: 10px;
+    }
+
+    .gender-options label {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Fix for the responsive layout and ensure input fields fit */
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px;
+      }
+
+      form input {
+        padding: 8px;
+        margin-bottom: 12px;
+      }
+
+      button {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <!-- Full Name Input -->
+      <label for="fullname">Full Name</label>
+      <div style="position: relative;">
+        <input type="text" id="fullname" name="fullname" required />
+        <i class="fas fa-user input-icon"></i>
+      </div>
+
+      <!-- Roll Number Input -->
+      <label for="rollnumber">Roll Number</label>
+      <div style="position: relative;">
+        <input type="text" id="rollnumber" name="rollnumber" required />
+        <i class="fas fa-id-badge input-icon"></i>
+      </div>
+
+      <!-- Phone Number Input -->
+      <label for="phone">Phone Number</label>
+      <div style="position: relative;">
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" />
+        <i class="fas fa-phone input-icon"></i>
+      </div>
+
+      <!-- Email Input -->
+      <label for="email">Email</label>
+      <div style="position: relative;">
+        <input type="email" id="email" name="email" required />
+        <i class="fas fa-envelope input-icon"></i>
+      </div>
+
+      <!-- Gender Radio Buttons -->
+      <label for="gender">Gender</label>
+      <div class="gender-group">
+        <div class="gender-options">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female" required> Female</label>
+          <label><input type="radio" name="gender" value="Other" required> Other</label>
+        </div>
+      </div>
+
+      <!-- Password Input -->
+      <label for="password">Password</label>
+      <div style="position: relative;">
+        <input type="password" id="password" name="password" required minlength="6" />
+        <i class="fas fa-lock input-icon"></i>
+      </div>
+
+      <!-- Confirm Password Input -->
+      <label for="confirmPassword">Confirm Password</label>
+      <div style="position: relative;">
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
+        <i class="fas fa-lock input-icon"></i>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullname").value.trim();
+      const rollNumber = document.getElementById("rollnumber").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const gender = document.querySelector("input[name='gender']:checked")?.value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const message = document.getElementById("message");
+
+      if (!/^\d{10}$/.test(phone)) {
+        message.textContent = "Please enter a valid 10-digit phone number.";
+        message.style.color = "red";
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        message.textContent = "Passwords do not match!";
+        message.style.color = "red";
+        return;
+      }
+
+      fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullname: fullName,
+          rollnumber: rollNumber,
+          phone,
+          email,
+          gender,
+          password,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            message.style.color = "green";
+            message.textContent = `Welcome, ${fullName}! Registration successful. Redirecting to login...`;
+            document.getElementById("registrationForm").reset();
+
+            setTimeout(() => {
+              window.location.href = "exp16.html"; // redirect to login page
+            }, 2000);
+          } else {
+            return res.text().then((text) => {
+              message.style.color = "red";
+              message.textContent = text;
+            });
+          }
+        })
+        .catch((err) => {
+          message.style.color = "red";
+          message.textContent = "Error: " + err.message;
+        });
+    });
+  </script>
+
+</body>
+</html>

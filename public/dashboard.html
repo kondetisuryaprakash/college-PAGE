@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #f1f4f9;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar img {
+      height: 30px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+      gap: 10px;
+    }
+
+    .sidebar a:hover {
+      background-color: #0066cc;
+    }
+
+    .main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .header button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p, .card ul {
+      color: #555;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      flex: 1;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        text-align: center;
+        height: auto;
+      }
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    .dark-mode .sidebar {
+      background-color: #1f1f1f;
+    }
+
+    .dark-mode .sidebar a:hover {
+      background-color: #333;
+    }
+
+    .dark-mode .card {
+      background-color: #2c2c2c;
+    }
+
+    .dark-mode .header h1,
+    .dark-mode h3,
+    .dark-mode p,
+    .dark-mode ul {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+      <h2>Lingaya's Dashboard</h2>
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-book"></i> Academic Registration</a>
+    <a href="#"><i class="fas fa-check-square"></i> Attendance Register</a>
+    <a href="#"><i class="fas fa-briefcase"></i> Career Choice</a>
+    <a href="#"><i class="fas fa-graduation-cap"></i> Courses</a>
+    <a href="#"><i class="fas fa-notes-medical"></i> Counselling Diary</a>
+    <a href="#"><i class="fas fa-users"></i> Clubs/Activities</a>
+    <a href="#"><i class="fas fa-file-alt"></i> Exam Section</a>
+    <a href="#"><i class="fas fa-comments"></i> Feedback</a>
+    <a href="#"><i class="fas fa-credit-card"></i> Fee Payments</a>
+    <a href="#"><i class="fas fa-bed"></i> Hostel Management</a>
+    <a href="#"><i class="fas fa-ticket-alt"></i> Hallticket</a>
+    <a href="#"><i class="fas fa-building"></i> Infrastructure</a>
+    <a href="#"><i class="fas fa-book-reader"></i> Library</a>
+    <a href="#"><i class="fas fa-chart-line"></i> My CGPA</a>
+    <a href="exp16.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1><i class="fas fa-university" style="margin-right: 10px;"></i>Welcome to the College Dashboard</h1>
+      <button onclick="location.href='profile.html'">
+        <i class="fas fa-user-circle"></i> My Profile
+      </button>
+    </div>
+
+    <div style="margin-bottom: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+      <input type="text" placeholder="Search..." />
+      <button onclick="toggleDarkMode()" style="background: #222; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer;">
+        <i class="fas fa-moon"></i> Toggle Dark Mode
+      </button>
+      <div id="clock" style="font-size: 18px; font-weight: bold; padding: 10px;"></div>
+    </div>
+
+    <!-- Announcements -->
+    <div class="card" style="margin-bottom: 20px;">
+      <h3><i class="fas fa-bullhorn" style="margin-right: 8px;"></i>Announcements</h3>
+      <ul>
+        <li>📅 Exams start from June 1st.</li>
+        <li>🧪 Science fair on May 20th.</li>
+        <li>📢 Seminar registration deadline: May 15.</li>
+      </ul>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card">
+        <h3><i class="fas fa-users"></i> Total Students</h3>
+        <p><span class="counter" data-target="1250">0</span></p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-layer-group"></i> Departments</h3>
+        <p><span class="counter" data-target="10">0</span></p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+        <p>Annual Tech Fest - May 25</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-user-plus"></i> New Registrations</h3>
+        <p><span class="counter" data-target="245">0</span> this semester</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      alert("You have been logged out!");
+      window.location.href = 'exp16.html';
+    }
+
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Live Clock
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString();
+    }, 1000);
+
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      counter.innerText = '0';
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 100;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  </script>
+
+</body>
+</html>

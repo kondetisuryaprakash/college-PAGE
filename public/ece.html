@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECE Department</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 scroll-smooth">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 bg-white shadow z-50">
+    <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-xl font-bold text-indigo-700">ECE Department</h1>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li><a href="#about" class="hover:text-indigo-600">About</a></li>
+        <li><a href="#vision" class="hover:text-indigo-600">Vision & Mission</a></li>
+        <li><a href="#programs" class="hover:text-indigo-600">Programs</a></li>
+        <li><a href="#faculty" class="hover:text-indigo-600">Faculty</a></li>
+        <li><a href="#labs" class="hover:text-indigo-600">Labs</a></li>
+        <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-indigo-700 text-white text-center p-16">
+    <h2 class="text-4xl font-extrabold mb-3">Electronics & Communication Engineering</h2>
+    <p class="text-lg mb-6">Empowering innovation in electronics, communication, and technology</p>
+    <a href="#programs" class="bg-white text-indigo-700 px-5 py-2 rounded-full font-semibold hover:bg-gray-100">Explore Programs</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-6xl mx-auto p-8">
+    <h2 class="text-3xl font-bold mb-4 text-indigo-700">About the Department</h2>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      The ECE Department provides a rigorous academic foundation and real-world problem-solving skills.
+      Our curriculum spans signal processing, embedded systems, IoT, VLSI, and communication technologies.
+    </p>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section id="vision" class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Vision & Mission</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Our Vision</h3>
+          <p>To become a premier center of excellence producing globally competent ECE professionals.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Our Mission</h3>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Deliver high-quality technical education.</li>
+            <li>Promote research and innovation in ECE.</li>
+            <li>Strengthen industry-academia collaboration.</li>
+            <li>Encourage entrepreneurship and leadership.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Offered -->
+  <section id="programs" class="p-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Programs Offered</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white shadow-md p-4 rounded-lg">
+          <h3 class="font-semibold text-xl">B.Tech ECE</h3>
+          <p>Undergraduate program focused on core electronics and communications foundations.</p>
+        </div>
+        <div class="bg-white shadow-md p-4 rounded-lg">
+          <h3 class="font-semibold text-xl">M.Tech VLSI / Embedded</h3>
+          <p>Postgraduate program offering deep specialization in design and implementation.</p>
+        </div>
+        <div class="bg-white shadow-md p-4 rounded-lg">
+          <h3 class="font-semibold text-xl">Ph.D. in ECE</h3>
+          <p>Doctoral research program in advanced communication, AI, and electronics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Section -->
+  <section id="faculty" class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Our Faculty</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition duration-300">
+          <h4 class="text-lg font-bold">Dr. A. Kumar</h4>
+          <p>Professor & Head of Department</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition duration-300">
+          <h4 class="text-lg font-bold">Dr. B. Sharma</h4>
+          <p>Associate Professor – Signal Processing</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg transition duration-300">
+          <h4 class="text-lg font-bold">Ms. C. Rao</h4>
+          <p>Assistant Professor – VLSI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Labs -->
+  <section id="labs" class="p-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Laboratories</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 shadow rounded">Communication Systems Lab</div>
+        <div class="bg-white p-4 shadow rounded">Microprocessors & Microcontrollers Lab</div>
+        <div class="bg-white p-4 shadow rounded">VLSI & Embedded Systems Lab</div>
+        <div class="bg-white p-4 shadow rounded">Digital Signal Processing Lab</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-indigo-700 text-white p-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+      <p>Department of ECE, Lingayas</p>
+      <p>Email: <a href="mailto:ece@yourcollege.edu" class="underline">ece@yourcollege.edu</a></p>
+      <p>Phone: +91-7799332797</p>-
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white text-center py-4">
+    &copy; 2025 Department of ECE – All rights reserved.
+  </footer>
+
+</body>
+</html>
